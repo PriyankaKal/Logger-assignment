@@ -11,25 +11,11 @@ const Filter = (props) => {
 
 
   const submitButton = () => {
-    // if (actionType) {
-    //   props.filterUsers("actionType", actionType);
-    //   setActionType();
-    // }
-    // else if (applicationType) {
-    //   props.filterUsers("applicationType", applicationType);
-    //   setApplicationType();
-    // }
-    // else if (applicationId) {
-    //   props.filterApplication("applicationId", applicationId);
-    //   setApplicationId();
-    // }
-    // else if (searchData.start !== "" && searchData.end !== "") {
-    //   props.filterdate(searchData)
-    // }
+   
 if(actionType || applicationType || applicationId || searchData.start || searchData.end){
   let filterArray = [];
   filterArray = [{actionType : actionType ? actionType : null , applicationType :applicationType ? applicationType : null, applicationId : applicationId ? applicationId : null, startDate :searchData.start ? searchData.start : null, endDate : searchData.end ? searchData.end : null}];
-  console.log('filterArray--123', filterArray , filterArray.length);
+  
   let filterArrayUpdated = [];
   props.filterCombine(filterArray);
   let searchData1 = '';
@@ -40,7 +26,7 @@ if(actionType || applicationType || applicationId || searchData.start || searchD
 }
 if ((actionType && actionType!=="Select Action Types") && ((applicationType && applicationType!=="Select Application Types")) && applicationId){
   searchData1 = `actionType=${actionType}?applicationType=${applicationType}?applicationId=${applicationId}`
-  console.log(searchData1,"searchDataNew", )
+
 }
 else if(actionType && actionType!=="Select Action Types"){
       searchData1 = `actionType=${actionType}` ;
@@ -56,7 +42,7 @@ else if(actionType && actionType!=="Select Action Types"){
     }
     else  if (applicationType && applicationType!=="Select Application Types"){
       searchData1 =  `applicationType=${applicationType}`;
-      console.log('applicationType-else')
+
     }
     else if(applicationId && applicationId!=='' && applicationId!==null){
       searchData1 = `applicationId=${applicationId}`;
@@ -70,7 +56,7 @@ else if (searchData.start && searchData.end){
 }
     
     // : 'No data found';
-    console.log(searchData1,"searchData", )
+  
     if((searchData1 !== 'No data found') || (searchData1 !== '')){
       navigate(`?${searchData1} `)
       // props.SearchParams(`?${searchData1}`)
@@ -84,18 +70,6 @@ else if (searchData.start && searchData.end){
 else{
   props.filterCombine(false);
 }
-
-    // let searchData1 = actionType ? `actionType=${actionType}` 
-    // : applicationType ? `applicationType=${applicationType}` 
-    // : applicationId ? `applicationId=${applicationId}` 
-    // : searchData.start ? `startDate =${searchData.start},${searchData.end}` 
-    // : 'No data found';
-    // console.log(searchData1,"searchData", searchData1.includes('startDate'))
-    // if((searchData1 !== 'No data found')){
-    //   navigate(`?${searchData1} `)
-    //   props.SearchParams(`?${searchData1}`)
-    // }
-
   
   }
 
